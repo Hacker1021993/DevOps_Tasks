@@ -1,0 +1,94 @@
+================================================================================
+TASK REPORT: FILE SYSTEM MANAGEMENT
+================================================================================
+
+[TASK DESCRIPTION]
+Create directory "my_folder", navigate into it, create "my_file.txt" and 
+"another_file.txt". Concatenate contents. Create 20 .txt files, rename the 
+first 5 to .yml, and print the top 5 latest files.
+
+--------------------------------------------------------------------------------
+STEP 1: DIRECTORY CREATION & NAVIGATION
+--------------------------------------------------------------------------------
+INPUT:
+  mkdir my_folder
+  cd my_folder/
+  ls
+
+OUTPUT:
+  (Returns to prompt, folder is empty)
+
+--------------------------------------------------------------------------------
+STEP 2: CREATING PRIMARY FILES
+--------------------------------------------------------------------------------
+INPUT:
+  echo "This is the first file" > my_file.txt
+  echo "This is the secnod file named another file" > another_file.txt
+
+OUTPUT:
+  (Files created successfully)
+
+--------------------------------------------------------------------------------
+STEP 3: FILE CONCATENATION & VERIFICATION
+--------------------------------------------------------------------------------
+INPUT:
+  cat another_file.txt >> my_file.txt
+  cat my_file.txt
+
+OUTPUT:
+  This is the first file
+  This is the secnod file named another file
+
+--------------------------------------------------------------------------------
+STEP 4: BULK FILE CREATION (20 FILES)
+--------------------------------------------------------------------------------
+INPUT:
+  touch file{1..20}.txt
+  ls
+
+OUTPUT:
+  another_file.txt  file12.txt  file16.txt  file2.txt   file5.txt  file9.txt
+  file10.txt        file13.txt  file17.txt  file20.txt  file6.txt  my_file.txt
+  file11.txt        file14.txt  file18.txt  file3.txt   file7.txt
+  file1.txt         file15.txt  file19.txt  file4.txt   file8.txt
+
+--------------------------------------------------------------------------------
+STEP 5: RENAMING & EXTENSION FILTERING
+--------------------------------------------------------------------------------
+INPUT:
+  # (Renamed file1.txt through file5.txt to .yml)
+  ls | grep .yml
+
+OUTPUT:
+  file1.yml
+  file2.yml
+  file3.yml
+  file4.yml
+  file5.yml
+
+--------------------------------------------------------------------------------
+STEP 6: TOTAL FILE COUNT
+--------------------------------------------------------------------------------
+INPUT:
+  echo "Total number of files: "; ls -p | grep -v / | wc -l
+
+OUTPUT:
+  Total number of files: 
+  22
+
+--------------------------------------------------------------------------------
+STEP 7: PRINT LATEST 5 FILES
+--------------------------------------------------------------------------------
+INPUT:
+  echo "List of Latest 5 files: "; ls -tp | grep -v / | head -n 5
+
+OUTPUT:
+  List of Latest 5 files: 
+  file1.yml
+  file10.txt
+  file11.txt
+  file12.txt
+  file13.txt
+
+================================================================================
+[END OF REPORT]
